@@ -1,6 +1,6 @@
+# coding=utf-8
 # Django settings for Comrade project.
 from django.core.exceptions import ImproperlyConfigured
-
 
 def get_env_variable(var_name):
     """ Get the environment variable or return exception """
@@ -135,6 +135,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'FrontEnd',
+    'floppyforms',
     'django_extensions',
 )
 
@@ -166,3 +167,4 @@ LOGGING = {
         },
     }
 }
+

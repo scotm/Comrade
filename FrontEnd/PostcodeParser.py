@@ -1,3 +1,4 @@
+# coding=utf-8
 from abc import abstractmethod
 from django.contrib.gis.geos import Point
 from FrontEnd.models import PostcodeMapping

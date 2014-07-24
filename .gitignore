@@ -4,3 +4,7 @@ ComradeEnvironment/
 OSData/
 postcodes.csv
 .idea/
+*.zip
+*.pgsql.gz
+*.lzma
+*.bz2
