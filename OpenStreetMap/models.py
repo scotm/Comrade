@@ -1,60 +1,5 @@
 from django.contrib.gis.db import models
 
-common = {
-    'bridge',
-    'building',
-    'construction',
-    'covered',
-    'culvert',
-    'cutting',
-    'denomination',
-    'disused',
-    'embankment',
-    'foot',
-    'generator_source',
-    'harbour',
-    'highway',
-    'historic',
-    'horse',
-    'intermittent',
-    'junction',
-    'landuse',
-    'layer',
-    'leisure',
-    'lock',
-    'man_made',
-    'military',
-    'motorcar',
-    'name',
-    'natural',
-    'office',
-    'oneway',
-    'operator',
-    'place',
-    'population',
-    'power',
-    'power_source',
-    'public_transport',
-    'railway',
-    'ref',
-    'religion',
-    'route',
-    'service',
-    'shop',
-    'sport',
-    'surface',
-    'toll',
-    'tourism',
-    'tower_type',
-    'tunnel',
-    'water',
-    'waterway',
-    'way',
-    'wetland',
-    'width',
-    'wood',
-    'z_order'}
-
 
 class BaseOsmModel(models.Model):
     access = models.TextField(blank=True)
@@ -68,6 +13,7 @@ class BaseOsmModel(models.Model):
     area = models.TextField(blank=True)
     barrier = models.TextField(blank=True)
     bicycle = models.TextField(blank=True)
+    boundary = models.TextField(blank=True)
     brand = models.TextField(blank=True)
     bridge = models.TextField(blank=True)
     building = models.TextField(blank=True)
@@ -129,8 +75,6 @@ class BaseOsmModel(models.Model):
 # Create your models here.
 class PlanetOsmLine(BaseOsmModel):
     osm_id = models.BigIntegerField(blank=True, primary_key=True)
-    boundary = models.TextField(blank=True)
-    tracktype = models.TextField(blank=True)
     way_area = models.FloatField(blank=True, null=True)
     way = models.LineStringField(srid=900913, blank=True, null=True)
     objects = models.GeoManager()
@@ -142,7 +86,6 @@ class PlanetOsmLine(BaseOsmModel):
 
 class PlanetOsmPoint(BaseOsmModel):
     osm_id = models.BigIntegerField(blank=True, primary_key=True)
-    boundary = models.TextField(blank=True)
     capital = models.TextField(blank=True)
     ele = models.TextField(blank=True)
     poi = models.TextField(blank=True)
@@ -156,7 +99,6 @@ class PlanetOsmPoint(BaseOsmModel):
 
 class PlanetOsmPolygon(BaseOsmModel):
     osm_id = models.BigIntegerField(blank=True, primary_key=True)
-    boundary = models.TextField(blank=True)
     tracktype = models.TextField(blank=True)
     way_area = models.FloatField(blank=True, null=True)
     way = models.GeometryField(srid=900913, blank=True, null=True)
@@ -169,7 +111,6 @@ class PlanetOsmPolygon(BaseOsmModel):
 
 class PlanetOsmRoads(BaseOsmModel):
     osm_id = models.BigIntegerField(blank=True, primary_key=True)
-    boundary = models.TextField(blank=True)
     tracktype = models.TextField(blank=True)
     way_area = models.FloatField(blank=True, null=True)
     way = models.LineStringField(srid=900913, blank=True, null=True)
