@@ -1,0 +1,6 @@
+{% extends "floppyforms/gis/google.html" %}
+
+{% block options %}{{ block.super }}
+options['default_lon'] = {{ lon }};
+options['default_lat'] = {{ lat }};
+{% endblock %}

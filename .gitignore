@@ -8,3 +8,4 @@ postcodes.csv
 *.pgsql.gz
 *.lzma
 *.bz2
+postcodes*.csv

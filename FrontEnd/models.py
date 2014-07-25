@@ -6,7 +6,6 @@ import requests
 from BeautifulSoup import NavigableString, BeautifulSoup
 from django.contrib.gis.db import models
 
-
 postcode_regex = 'GIR[ ]?0AA|((AB|AL|B|BA|BB|BD|BH|BL|BN|BR|BS|BT|BX|CA|CB|CF|CH|CM|CO|CR|CT|CV|CW|DA|DD|DE|DG|DH|DL|DN|DT|DY|E|EC|EH|EN|EX|FK|FY|G|GL|GY|GU|HA|HD|HG|HP|HR|HS|HU|HX|IG|IM|IP|IV|JE|KA|KT|KW|KY|L|LA|LD|LE|LL|LN|LS|LU|M|ME|MK|ML|N|NE|NG|NN|NP|NR|NW|OL|OX|PA|PE|PH|PL|PO|PR|RG|RH|RM|S|SA|SE|SG|SK|SL|SM|SN|SO|SP|SR|SS|ST|SW|SY|TA|TD|TF|TN|TQ|TR|TS|TW|UB|W|WA|WC|WD|WF|WN|WR|WS|WV|YO|ZE)(\\d[\\dA-Z]?[ ]?\\d[ABD-HJLN-UW-Z]{2}))|BFPO[ ]?\\d{1,4}'
 prog = re.compile(postcode_regex)
 
@@ -178,9 +177,11 @@ class Region(models.Model):
                           transform=True, encoding='iso-8859-1')
         lm.save(strict=True, verbose=verbose)
         Region.objects.filter(descriptio__icontains='Welsh Assembly').delete()
-        # highlands = Region.objects.filter(name__icontains='Highlands and Islands PER')
+        print "Regions imported"
+
+        # highlands = Region.objects.filter(name__icontains='Highlands and Islands PER').values('geom')
+
         # baseline = highlands[0].geom
         # for i in highlands[1:]:
         # baseline = baseline.union(i.geom)
         # Region(name='Highlands and Islands COMPLETE', descriptio='Scottish Parliament Electoral Region', hectares='4050000')
-
